@@ -1,4 +1,5 @@
 ﻿using LanchesJulian.Context;
+using LanchesJulian.Models;
 using LanchesJulian.Repositories;
 using LanchesJulian.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,8 @@ public class Startup
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
+        
 
         services.AddControllersWithViews();
         services.AddMemoryCache();
